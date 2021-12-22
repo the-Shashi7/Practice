@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-
+//Making Node for LinkedList
 class Node{
     public:
            int data;
@@ -10,13 +10,13 @@ class Node{
         next = NULL;
     }
 };
-
+//Taking Input 
 Node* takeInput(){
     int data;
     cin>>data;
     Node*head = NULL;
     Node*tail = NULL;
-    while (data!= -0){
+    while (data!= -1){
         Node *newNode = new Node(data);
         if(head== NULL){
             head = newNode;
@@ -34,7 +34,29 @@ Node* takeInput(){
     }
     return head;
 }
-
+// Node insertions
+Node* insertNode(Node*head,int i ,int data){
+    Node*newNode = new Node(data);
+    int count = 0;
+    Node *temp = head;
+    if(i==0){
+        newNode ->next =head;
+        head = newNode;
+        return head;
+    }
+    while (temp != NULL && count < i-1){
+        temp = temp ->next;
+        count++;
+    }
+    if(temp != NULL){
+        Node *a =temp->next;
+       // newNode->next = temp->next;
+        temp->next = newNode;
+        newNode ->next =a;
+    }
+    return head;
+}
+//Node Printing
 void Print(Node*head){
     Node*temp = head;
     while(temp!=NULL){
@@ -55,6 +77,10 @@ int main(){
     n3.next =&n4;    
     n4.next =&n5;  */ 
     Node*head = takeInput();
+    Print(head);
+    int i,data;
+    cin>>i>>data;
+    insertNode(head,i,data);
     Print(head);  
     return 0;
 }
