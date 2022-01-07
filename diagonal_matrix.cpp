@@ -11,10 +11,10 @@ public:
         this->n = n;
         A = new int[n];
     };
-    ~Diagonal(){ delete []A ; };
+    ~Diagonal(){ delete []A ; }
 
     void Set(int i, int j, int x);
-    int Get(int i, int j);
+    void Get(int i, int j);
     void Display();
 };
 
@@ -22,15 +22,15 @@ void Diagonal::Set(int i, int j , int x){
     if (i==j) A[i-1] = x;
 }
 
-int Diagonal::Get(int i , int j){
-    if (i==j)  return A[i-1];
-    else return 0;
+void Diagonal::Get(int i , int j){
+    if (i==j)  cout<<A[i-1];
+    else cout<<0;
 }
 
 void Diagonal::Display(){
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i <= n; i++)
     {
-        for (int j = 0; j < n; j++)
+        for (int j = 1; j <= n; j++)
         {
             if (i==j)
             {   
@@ -49,5 +49,6 @@ int main(){
     d.Set(3,3,9);
     d.Set(4,4,12);
     d.Display();
+    d.Get(1,2);
     return 0;
 }
